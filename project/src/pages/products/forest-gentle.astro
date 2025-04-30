@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Forest Gentle 森林香氛 | Forest Calm";
+const description = "添加天然精油的森林香氛洗毛精，為輕度敏感的毛孩帶來舒適的沐浴體驗。";
+---
+
+<Layout title={title} description={description}>
+  <Navbar />
+  
+  <main class="pt-20">
+    <section class="section bg-white">
+      <div class="container-custom">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+          <div class="lg:w-1/2">
+            <img 
+              src="https://images.pexels.com/photos/6816304/pexels-photo-6816304.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+              alt="Forest Gentle 森林香氛" 
+              class="rounded-xl shadow-xl w-full"
+            />
+          </div>
+          
+          <div class="lg:w-1/2">
+            <span class="inline-block bg-secondary text-white py-1 px-3 rounded-full text-sm mb-4">天然香氛</span>
+            <h1 class="text-4xl mb-4">Forest Gentle 森林香氛</h1>
+            <p class="text-2xl text-primary mb-4">NT$550</p>
+            <p class="text-lg mb-6">
+              添加天然精油的森林香氛洗毛精，為輕度敏感的毛孩帶來舒適的沐浴體驗。
+              深褐瓶身搭配黑色瓶蓋，展現自然純粹的品牌精神。
+            </p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              <div class="bg-accent p-4 rounded-lg">
+                <h3 class="text-lg mb-2">容量</h3>
+                <p>500ml</p>
+              </div>
+              <div class="bg-accent p-4 rounded-lg">
+                <h3 class="text-lg mb-2">適用對象</h3>
+                <p>輕度敏感體質</p>
+              </div>
+            </div>
+            
+            <div class="space-y-6 mb-8">
+              <h3 class="text-xl">主要成分</h3>
+              <ul class="list-disc list-inside space-y-2">
+                <li>雪松精油 - 天然抗菌</li>
+                <li>尤加利精油 - 清新提神</li>
+                <li>迷迭香萃取 - 活絡循環</li>
+                <li>維他命B5 - 強健毛髮</li>
+              </ul>
+            </div>
+            
+            <div class="flex gap-4">
+              <a href="/#sample" class="btn-primary flex-1 text-center">索取體驗包</a>
+              <a href="/#contact" class="btn-outline flex-1 text-center">聯絡我們</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

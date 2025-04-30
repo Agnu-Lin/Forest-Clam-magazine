@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Forest Calm | Natural Pet Shampoo for Sensitive Pets",
+  description = "Gentle natural pet shampoo designed for sensitive pets. Gentle as a forest. Pure as your love."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forestcalm.tw" />
+    <meta property="og:image" content="https://forestcalm.tw/og-image.jpg" />
+    
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
