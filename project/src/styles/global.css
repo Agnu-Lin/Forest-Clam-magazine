@@ -20,43 +20,42 @@
       -webkit-overflow-scrolling: touch;
     }
   }
-}
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  @screen md {
-    font-size: 18px;
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    @screen md {
+      font-size: 18px;
+    }
   }
-}
-
-body {
-  @apply bg-accent text-gray-800 font-sans min-h-screen;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  @apply font-serif font-bold text-primary-dark tracking-tight;
-}
-
-h1 {
-  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight;
-  font-size: clamp(2rem, 5vw, 4rem);
-}
-
-h2 {
-  @apply text-2xl sm:text-3xl md:text-4xl leading-snug mb-4 sm:mb-6;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-}
-
-h3 {
-  @apply text-xl sm:text-2xl md:text-3xl leading-snug mb-3 sm:mb-4;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-}
-
-p {
-  @apply mb-4 leading-relaxed text-base sm:text-lg max-w-prose;
-  font-size: clamp(1rem, 2vw, 1.125rem);
-}
+  
+  body {
+    @apply bg-accent text-gray-800 font-sans min-h-screen;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold text-primary-dark tracking-tight;
+  }
+  
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight;
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+  
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl leading-snug mb-4 sm:mb-6;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  
+  h3 {
+    @apply text-xl sm:text-2xl md:text-3xl leading-snug mb-3 sm:mb-4;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+  }
+  
+  p {
+    @apply mb-4 leading-relaxed text-base sm:text-lg max-w-prose;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+  }
 }
 
 @layer components {
@@ -148,7 +147,29 @@ p {
 
 /* Mobile menu adjustments */
 .mobile-menu {
-  @apply fixed inset-0 bg-white z-50 transform transition-transform duration-300;
+  height: auto;
+  max-height: 80vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 確保按鈕在觸控時有足夠的點擊區域 */
+.btn,
+.nav-link,
+.mobile-nav-link {
+  min-height: 44px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* 優化觸控反饋 */
+@media (hover: none) {
+  .btn:active,
+  .nav-link:active,
+  .mobile-nav-link:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
 }
 
 .mobile-menu.hidden {
