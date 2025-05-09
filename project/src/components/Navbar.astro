@@ -15,7 +15,7 @@
       <a href="/sample" class="btn-primary text-sm lg:text-base">索取體驗包</a>
     </div>
     
-    <button id="mobile-menu-button" class="md:hidden text-primary p-2 hover:bg-primary/10 rounded-lg transition-colors">
+    <button id="mobile-menu-button" class="md:hidden text-primary p-2 hover:bg-primary/10 rounded-lg transition-colors" aria-label="選單" aria-expanded="false">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
@@ -23,7 +23,7 @@
   </nav>
   
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-sm absolute w-full left-0 top-full transform translate-y-0 opacity-0 pointer-events-none transition-all duration-300 z-40 shadow-lg border-t border-gray-100">
+  <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-sm absolute w-full left-0 top-full transform translate-y-0 opacity-0 pointer-events-none transition-all duration-300 z-40 shadow-lg border-t border-gray-100 mobile-menu" role="navigation" aria-label="手機版選單">
     <div class="container-custom py-6 flex flex-col space-y-3">
       <a href="/about" class="mobile-nav-link">品牌故事</a>
       <a href="/products" class="mobile-nav-link">產品</a>
@@ -41,6 +41,8 @@
   const header = document.getElementById('header');
   
   menuButton?.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', (!isExpanded).toString());
     mobileMenu?.classList.toggle('opacity-0');
     mobileMenu?.classList.toggle('pointer-events-none');
   });
@@ -59,6 +61,16 @@
   mobileLinks?.forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+      menuButton?.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // 處理 iOS Safari 的高度問題
+  const setMobileMenuHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  setMobileMenuHeight();
+  window.addEventListener('resize', setMobileMenuHeight);
 </script>
